@@ -1,0 +1,21 @@
+using System;
+
+namespace CSharp_test
+{
+    internal class Program
+    {
+        public delegate void MyDelegate(string message);
+        public delegate void MyDelegate2(int number);
+        static void Main(string[] args)
+        {
+            MyDelegate myDelegate = Console.WriteLine;
+            myDelegate("Merhaba, Dünya!");
+            MyDelegate2 myDelegate2 = metot;
+            myDelegate2(5);
+        }
+        static public void metot(int number)
+        {
+            Console.WriteLine(number);
+        }
+    }
+}
