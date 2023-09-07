@@ -1,17 +1,26 @@
 using System;
+using System.Threading;
 
-// Callback işlevini tanımlayan bir delegasyon
 public delegate void CallbackDelegate(string message);
 
 public class ProcessData
 {
-    // Callback delegesini içeren bir yöntem
     public void StartProcessing(CallbackDelegate callback)
     {
         Console.WriteLine("Veriler işleniyor...");
-        // İşleme süreci burada gerçekleşir.
-        // İşlem tamamlandığında callback işlevini çağırın
-        callback("Veriler işlendi.");
+
+        // Yeni bir iş parçacığı (thread) oluşturun ve işlemi bu iş parçacığında yapın
+        Thread processingThread = new Thread(() =>
+        {
+            // Simüle edilen bir işlem, burada birkaç saniye sürebilir
+            Thread.Sleep(2000);
+
+            // İşlem tamamlandığında callback işlevini çağırın
+            callback("Veriler işlendi.");
+        });
+
+        // İş parçacığını başlatın
+        processingThread.Start();
     }
 }
 
@@ -26,9 +35,11 @@ public class Program
 
         // Verileri işlemeyi başlatın ve callback işlemini ileterek sonucu alın
         dataProcessor.StartProcessing(callbackFunction);
+
+        Console.WriteLine("Ana iş parçacığı devam ediyor...");
+        Console.ReadLine();
     }
 
-    // Callback işleminde kullanılacak işlev
     static void DisplayMessage(string message)
     {
         Console.WriteLine("Callback: " + message);
