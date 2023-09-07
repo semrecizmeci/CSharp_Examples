@@ -1,0 +1,50 @@
+using System;
+using System.Collections.Generic;
+using System.Threading;
+
+namespace C__Async_test
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            Thread thread = new Thread(WorkerMethod);
+            thread.Start();
+
+            // İş parçacığının çalışıp çalışmadığını kontrol etmek için IsAlive kullanılır.
+            if (thread.IsAlive)
+            {
+                Console.WriteLine("İş parçacığı hala çalışıyor.");
+            }
+            else
+            {
+                Console.WriteLine("İş parçacığı tamamlandı veya başlatılmadı.");
+            }
+
+            // İş parçacığı tamamlanana kadar bekleyin
+            thread.Join();
+
+            // İş parçacığı tamamlandıktan sonra kontrol tekrar yapılabilir
+            if (thread.IsAlive)
+            {
+                Console.WriteLine("İş parçacığı hala çalışıyor.");
+            }
+            else
+            {
+                Console.WriteLine("İş parçacığı tamamlandı veya başlatılmadı.");
+            }
+
+        }
+
+        public static void WorkerMethod()
+        {
+            int sayi = 0;
+            for (int i = 0; i < 30; i++)
+            {
+                sayi++;
+            }
+        }
+    }
+    
+
+} 
