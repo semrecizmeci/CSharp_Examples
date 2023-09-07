@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+using System.Threading;
+
+namespace C__Async_test
+{
+    public class Program
+    {
+       static void Main(string[] args)
+        {
+            ParameterizedThreadStart obj = new ParameterizedThreadStart(ShowNumbers);
+            Thread t = new Thread(obj);
+            t.Start(10);
+            Console.ReadLine();
+        }
+
+
+      static void ShowNumbers(object? maxNum)
+        {
+            for (int i = 0; i < Convert.ToInt32(maxNum); i++)
+            {
+                Console.WriteLine(i);
+            }
+        }
+
+
+
+    }
+
+}
