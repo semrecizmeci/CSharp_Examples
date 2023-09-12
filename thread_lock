@@ -1,0 +1,32 @@
+using System;
+using System.Threading;
+
+namespace C__examples
+{
+    class ThreadTest
+    {
+        private bool done;
+        private object lockObject = new object(); // Kilit nesnesi
+
+        static void Main()
+        {
+            ThreadTest tt = new ThreadTest(); // Ortak bir örnek oluşturun
+            new Thread(tt.Go).Start();
+            tt.Go();
+            
+        }
+
+        void Go()
+        {
+            lock (lockObject)
+            {
+                if (!done)
+                {
+
+                    done = true;
+                    Console.WriteLine("Done");
+                }
+            }
+        }
+    }
+}
