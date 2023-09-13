@@ -1,0 +1,20 @@
+using System.Linq;
+
+namespace C__examples3
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> l = new()
+          {
+              1, 2, 3, 4, 5, 6, 7,8, 9, 10, 11, 12, 13, 14, 15,
+          };
+            List<int> r = l.Where(x => x % 2 == 0).ToList();
+            foreach (var item in r)
+            {
+                Console.WriteLine(item);
+            }
+        }
+    }
+}
