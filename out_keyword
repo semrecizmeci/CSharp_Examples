@@ -4,10 +4,12 @@ class Program
 {
     static void Main()
     {
+        int _a;
+        int _b;
         Program p = new();
-        p.metot(out int a, out int b, 2);
-        Console.WriteLine("a: " + a); 
-        Console.WriteLine("b: " + b); 
+        p.metot(out  _a, out _b, 2);
+        Console.WriteLine("a: " + _a); 
+        Console.WriteLine("b: " + _b); 
     }
 
     public void metot(out int a, out int b, int c)
