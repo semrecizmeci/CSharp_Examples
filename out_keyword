@@ -1,0 +1,21 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Program p = new();
+        p.metot(out int a, out int b, 2);
+        Console.WriteLine("a: " + a); 
+        Console.WriteLine("b: " + b); 
+    }
+
+    public void metot(out int a, out int b, int c)
+    {
+        a = 2;
+        b = 4;
+
+        Console.WriteLine("selam");
+    }
+    
+}
