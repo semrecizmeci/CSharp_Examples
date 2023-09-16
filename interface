@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        musteriler m = new musteriler();
+        m.Musterilistemetot();
+    }
+}
+public class musteriler : Imusteriler
+{
+    public List<musteriler> list = new();
+    public string? isim { get; set; } = "sado";
+    public int yas { get; set; } = 12;
+    public List<musteriler> Musterilistemetot()
+    {
+        list.Add(this);
+        foreach (var item in list)
+        {
+            Console.WriteLine(item.isim);
+            Console.WriteLine(item.yas);
+        }
+        return list;
+    }
+}
+public interface Imusteriler
+{
+    public List<musteriler> Musterilistemetot();
+}
