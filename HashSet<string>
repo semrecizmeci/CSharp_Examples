@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        HashSet<string> set = new HashSet<string>();
+
+        // Set'e öğeler ekleyelim
+        set.Add("Elma");
+        set.Add("Armut");
+        set.Add("Muz");
+
+        // Aynı öğeyi tekrar eklemeyelim (zaten benzersiz)
+        set.Add("Elma");
+        set.Add("Elma");
+        set.Add("Elma");
+        set.Add("Elma");
+        set.Add("Elma");
+
+        // Set'teki öğeleri yazdıralım
+        Console.WriteLine("Set'teki Öğeler:");
+        foreach (string og in set)
+        {
+            Console.WriteLine(og);
+        }
+
+        // Bir öğenin set içinde olup olmadığını kontrol edelim
+        bool varMi = set.Contains("Armut");
+        Console.WriteLine("Armut Set'te Var Mı? " + varMi);
+    }
+}
