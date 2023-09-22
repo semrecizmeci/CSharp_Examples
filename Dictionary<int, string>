@@ -1,0 +1,28 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        // Bir öğrenci numarasıyla öğrenci adlarını eşleştiren bir sözlük oluşturalım.
+        Dictionary<int, string> ogrenciler = new Dictionary<int, string>();
+
+        // Sözlüğe öğrenci bilgilerini ekleyelim.
+        ogrenciler.Add(101, "Ali");
+        ogrenciler.Add(102, "Ayşe");
+        ogrenciler.Add(103, "Mehmet");
+
+        // Bir anahtar kullanarak değere erişebiliriz.
+        int ogrenciNo = 102;
+        if (ogrenciler.ContainsKey(ogrenciNo))
+        {
+            string ogrenciAdi = ogrenciler[ogrenciNo];
+            Console.WriteLine($"Öğrenci Adı: {ogrenciAdi}");
+        }
+        else
+        {
+            Console.WriteLine("Öğrenci bulunamadı.");
+        }
+    }
+}
