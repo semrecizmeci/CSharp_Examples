@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        Queue<string> kuyruk = new Queue<string>();
+
+        // Kuyruğa öğeleri ekleyelim.
+        kuyruk.Enqueue("Öğe 1");
+        kuyruk.Enqueue("Öğe 2");
+        kuyruk.Enqueue("Öğe 3");
+
+        // Kuyruğun başındaki öğeyi alalım.
+        string ilkOge = kuyruk.Dequeue();
+        Console.WriteLine($"İlk Öğe: {ilkOge}");
+
+        // Kuyruğun başındaki öğeye bakalım ama kuyruktan kaldırmayalım.
+        string ikinciOge = kuyruk.Peek();
+        Console.WriteLine($"İkinci Öğe (Peek): {ikinciOge}");
+
+        // Kuyruğun kalan öğelerini yazdıralım.
+        Console.WriteLine("Kuyruktaki Öğeler:");
+        foreach (string og in kuyruk)
+        {
+            Console.WriteLine(og);
+        }
+    }
+}
