@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        Stack<string> yigin = new Stack<string>();
+
+        // Yığına öğeleri ekleyelim.
+        yigin.Push("Öğe 1");
+        yigin.Push("Öğe 2");
+        yigin.Push("Öğe 3");
+
+        // Yığının üstündeki öğeyi alalım.
+        string ustOge = yigin.Pop();
+        Console.WriteLine($"Üst Öğe: {ustOge}");
+
+        // Yığının üstündeki öğeye bakalım ama yığından kaldırmayalım.
+        string ikinciOge = yigin.Peek();
+        Console.WriteLine($"İkinci Öğe (Peek): {ikinciOge}");
+
+        // Yığının kalan öğelerini yazdıralım.
+        Console.WriteLine("Yığındaki Öğeler:");
+        foreach (string og in yigin)
+        {
+            Console.WriteLine(og);
+        }
+    }
+}
