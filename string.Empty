@@ -1,0 +1,13 @@
+using System;
+
+public class Program
+{
+    public static void Main()
+    {
+        string text = "Bu bir örnek metindir.";
+        Console.WriteLine(text);
+        text = string.Empty; // "text" değişkenini boş bir dize olarak sıfırlar
+        Console.WriteLine(text);
+
+    }
+}
