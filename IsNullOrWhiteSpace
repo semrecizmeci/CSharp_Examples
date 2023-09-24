@@ -1,0 +1,21 @@
+using System;
+
+public class Program
+{
+    
+
+    public static void Main()
+    {
+        string input = "a"; // veya null veya "   " gibi boş bir değer
+
+        if (string.IsNullOrWhiteSpace(input))
+        {
+            Console.WriteLine("Dize boş veya null.");
+        }
+        else
+        {
+            Console.WriteLine("Dize dolu.");
+        }
+
+    }
+}
