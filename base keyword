@@ -1,0 +1,21 @@
+public class UstSinif
+{
+    public void BirMetot()
+    {
+        Console.WriteLine("Üst sınıftaki metot.");
+    }
+}
+
+public class TuretilmisSinif : UstSinif
+{
+    public static void Main(string[] args)
+    {
+        TuretilmisSinif t = new();
+        t.BaskaBirMetot();
+    }
+    public void BaskaBirMetot()
+    {
+        // Üst sınıftaki metodu çağırma
+        base.BirMetot(); // "Üst sınıftaki metot." çıktısını verir.
+    }
+}
