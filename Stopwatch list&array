@@ -1,0 +1,35 @@
+using System;
+using System.Diagnostics;
+
+public class Program
+{
+    public static void Main()
+    {
+        int[] array = new int[1000000];
+        List<int> list = new List<int>();
+
+        // Stopwatch nesnesini oluştur
+        Stopwatch arrayStopwatch = new Stopwatch();
+        Stopwatch listStopwatch = new Stopwatch();
+
+        // Dizi (array) üzerinde işlem yap
+        arrayStopwatch.Start();
+        for (int i = 0; i < array.Length; i++)
+        {
+            array[i] = i;
+        }
+        arrayStopwatch.Stop();
+
+        // List üzerinde işlem yap
+        listStopwatch.Start();
+        for (int i = 0; i < 1000000; i++)
+        {
+            list.Add(i);
+        }
+        listStopwatch.Stop();
+
+        // Süreleri yazdır
+        Console.WriteLine("Array Süresi: " + arrayStopwatch.ElapsedMilliseconds + " ms");
+        Console.WriteLine("List Süresi: " + listStopwatch.ElapsedMilliseconds + " ms");
+    }
+}
