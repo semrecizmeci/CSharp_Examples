@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+
+public class Program
+{
+    public static void Main()
+    {
+        LinkedList<string> linkedList = new LinkedList<string>();
+
+        // Eleman ekleme
+        linkedList.AddLast("Alice");
+        linkedList.AddLast("Bob");
+        linkedList.AddLast("Charlie");
+
+        // Elemanları dolaşma
+        foreach (var item in linkedList)
+        {
+            Console.WriteLine(item);
+        }
+
+        // Eleman silme
+        linkedList.Remove("Bob");
+
+        Console.WriteLine("Bob removed.");
+
+        // Değişikliklerin sonucunu gösterme
+        foreach (var item in linkedList)
+        {
+            Console.WriteLine(item);
+        }
+    }
+}
