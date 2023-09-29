@@ -1,0 +1,25 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class Program
+{
+    static void Main()
+    {
+        List<string> cities = new List<string> { "New York", "Los Angeles", "Chicago", "Houston", "Miami" };
+
+        // IQueryable sorgusu oluşturma
+        IQueryable<string> query = cities.AsQueryable();
+
+        // LINQ sorgusu oluşturma
+        var result = query.Where(city => city.Contains("o"))
+                         .OrderBy(city => city)
+                         .Select(city => city.ToUpper());
+
+        // Sorguyu çalıştırma
+        foreach (var city in result)
+        {
+            Console.WriteLine(city);
+        }
+    }
+}
