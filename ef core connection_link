@@ -1,0 +1,1 @@
+Scaffold-DbContext "Server=DESKTOP-LB51DP5\SQLEXPRESS;Database=aramamotoru;Trusted_Connection=True;TrustServerCertificate=True"
