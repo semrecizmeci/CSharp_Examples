@@ -1,0 +1,18 @@
+namespace Sadomazo1
+{
+  public class Program
+    {
+        public Program() {
+            Console.WriteLine("birinci");
+        }
+        public Program(int args):this() { 
+        
+        Console.WriteLine("ikinci");
+        }
+        static void Main()
+        {
+          Program program = new Program(1);
+        }
+    }
+    
+}
