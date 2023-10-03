@@ -1,0 +1,38 @@
+public class Example
+{
+    // EventHandler delegesi tanımlama
+    public event EventHandler MyEvent;
+
+    public void TriggerEvent()
+    {
+        // Olayı tetikleme
+        MyEvent?.Invoke(this, EventArgs.Empty);
+    }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        Example example = new Example();
+
+        // Birden fazla metodu olaya abone etme
+        example.MyEvent += HandleEvent1;
+        example.MyEvent += HandleEvent2;
+
+        // Olayı tetikleme
+        example.TriggerEvent();
+    }
+
+    // İlk olay işleyen metot
+    public static void HandleEvent1(object sender, EventArgs e)
+    {
+        Console.WriteLine("Olayı ilk metot işledi.");
+    }
+
+    // İkinci olay işleyen metot
+    public static void HandleEvent2(object sender, EventArgs e)
+    {
+        Console.WriteLine("Olayı ikinci metot işledi.");
+    }
+}
