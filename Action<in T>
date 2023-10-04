@@ -1,0 +1,23 @@
+public delegate void Action<in T>(T obj);
+
+public class Program
+{
+    public static void Main()
+    {
+        Action<Animal> hayvanEylemi = (animal) => Console.WriteLine($"Hayvan: {animal}");
+        Action<Cat> kediEylemi = hayvanEylemi; // Contravariance
+
+        Cat cat = new Cat();
+        kediEylemi(cat);
+    }
+}
+
+public class Animal
+{
+    public string Name { get; set; }
+}
+
+public class Cat : Animal
+{
+    public string Breed { get; set; }
+}
