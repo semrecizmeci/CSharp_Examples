@@ -1,0 +1,19 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Action<string> türünde bir delegate tanımlama
+        Action<string> logMessage = LogToConsole;
+
+        // Delegate'i çağırma
+        logMessage("Bu bir log mesajıdır.");
+    }
+
+    // Action<string> türünden bir işlev tanımlama
+    static void LogToConsole(string message)
+    {
+        Console.WriteLine($"Log: {message}");
+    }
+}
