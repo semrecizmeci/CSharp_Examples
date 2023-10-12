@@ -1,3 +1,4 @@
 Scaffold-DbContext "Server=DESKTOP-LB51DP5\SQLEXPRESS;Database=aramamotoru;Trusted_Connection=True;TrustServerCertificate=True"
 
 for blazor : Scaffold-DbContext "Server=DESKTOP-LB51DP5\SQLEXPRESS;Database=aramamotoru;Trusted_Connection=True;TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+ Add-Migration mig_1
