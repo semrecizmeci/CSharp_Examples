@@ -1,0 +1,28 @@
+using System;
+using System.Net.Http;
+using System.Threading.Tasks;
+
+class Program
+{
+    static async Task Main()
+    {
+        string apiUrl = "https://jsonplaceholder.typicode.com/posts"; // Kullanmak istediğiniz API'nin URL'si
+
+        using (HttpClient client = new HttpClient())
+        {
+            HttpResponseMessage response = await client.GetAsync(apiUrl);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = await response.Content.ReadAsStringAsync();
+
+                // API yanıtını yazdırın (JSON formatında)
+                Console.WriteLine(data);
+            }
+            else
+            {
+                Console.WriteLine("API isteği başarısız: " + response.StatusCode);
+            }
+        }
+    }
+}
