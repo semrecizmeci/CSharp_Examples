@@ -1,0 +1,41 @@
+----basic tuple
+var person = (Name: "John", Age: 30);
+Console.WriteLine($"{person.Name} is {person.Age} years old.");
+
+
+-----
+var values = (3, "Hello");
+Console.WriteLine($"Value 1: {values.Item1}, Value 2: {values.Item2}");
+
+
+
+-----Pattern Matching with tuple
+var tuple = (3, "Hello");
+if (tuple is (int number, string text))
+{
+    Console.WriteLine($"Number: {number}, Text: {text}");
+}
+
+
+
+---method tuple
+(int sum, int product) Calculate(int a, int b)
+{
+    return (a + b, a * b);
+}
+var result = Calculate(5, 3);
+Console.WriteLine($"Sum: {result.sum}, Product: {result.product}");
+
+
+
+-----
+var (_, _, sum) = (5, 3, 8);
+Console.WriteLine($"Sum: {sum}");
+
+
+
+----
+(int? a, int b) numbers = (null, 7);
+int result = numbers.a ?? numbers.b;
+Console.WriteLine($"Result: {result}");
+
