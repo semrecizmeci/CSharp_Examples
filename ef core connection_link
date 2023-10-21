@@ -2,3 +2,37 @@ Scaffold-DbContext "Server=DESKTOP-LB51DP5\SQLEXPRESS;Database=aramamotoru;Trust
 
 for blazor : Scaffold-DbContext "Server=DESKTOP-LB51DP5\SQLEXPRESS;Database=aramamotoru;Trusted_Connection=True;TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
  Add-Migration mig_1
+
+-----------------------------------------------------
+{
+  "ConnectionStrings": {
+    "MyConnection": "Server=...;Database=...;Trusted_Connection=True;TrustServerCertificate=True"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*"
+}
+
+-----------------------------------------
+add-migration firstMig
+-------------------------------------------
+    builder.Services.AddDbContext<MyDbContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("MyConnection")));
+----------------------------------------------------
+public class MyDbContext:DbContext
+{
+    
+    DbSet<Masalar> masalars {get; set;}
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseSqlServer("MyConnection");
+        }
+    }
+}
