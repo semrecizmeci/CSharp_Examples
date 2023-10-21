@@ -25,7 +25,9 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("MyConnection")))
 ----------------------------------------------------
 public class MyDbContext:DbContext
 {
-    
+       public MyDbContext(DbContextOptions<MyDbContext> options)
+   : base(options) { }
+
     DbSet<Masalar> masalars {get; set;}
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
