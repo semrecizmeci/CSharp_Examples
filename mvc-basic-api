@@ -1,3 +1,33 @@
+using System;
+using System.Net.Http;
+using System.Threading.Tasks;
+
+class Program
+{
+    static async Task Main()
+    {
+        using (var client = new HttpClient())
+        {
+            // API URL'sini belirtin (API projesinin URL'sini ve route'üne göre ayarlayın)
+            string apiUrl = "https://localhost:7015/api/test/Index"; // Örnek URL
+
+            // API'den veriyi alın
+            HttpResponseMessage response = await client.GetAsync(apiUrl);
+
+            if (response.IsSuccessStatusCode)
+            {
+                // Başarılı yanıtın içeriğini okuyun
+                string apiResponse = await response.Content.ReadAsStringAsync();
+                Console.WriteLine("API yanıtı: " + apiResponse);
+            }
+            else
+            {
+                Console.WriteLine("API'ye ulaşılamadı. HTTP Hata Kodu: " + response.StatusCode);
+            }
+        }
+    }
+}
+--------------------------------------------------------------------------------
 using Microsoft.AspNetCore.Mvc;
 
 namespace testApi.Controllers
@@ -6,7 +36,7 @@ namespace testApi.Controllers
     [ApiController]
     public class testController : ControllerBase
     {
-        [HttpGet("Index")]
+        [HttpGet("Index")] // Index eylemi için attribute yönlendirme ekleyin
         public IActionResult Index()
         {
             return Ok("test 1 2 3");
