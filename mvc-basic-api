@@ -1,0 +1,15 @@
+using Microsoft.AspNetCore.Mvc;
+
+namespace testApi.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class testController : ControllerBase
+    {
+        [HttpGet("Index")]
+        public IActionResult Index()
+        {
+            return Ok("test 1 2 3");
+        }
+    }
+}
