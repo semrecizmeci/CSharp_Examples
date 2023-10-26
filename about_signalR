@@ -60,11 +60,15 @@ app.Run();
                 connection.invoke("SendMessageAsync", message)
                     .catch(error => console.log(`Mesaj gönderilirken oluşan hata: ${error}`));
             });
+            connection.on("tetiklenecekFonksiyon",message=>{
+                $("div").append(message + "<br>");
+            })
         });
     </script>
 </head>
 <body>
     <input type="text" id="txtMessage">
     <button id="btnGonder">gönder</button>
+    <div></div>
 </body>
 </html>
