@@ -1,0 +1,70 @@
+using Microsoft.AspNetCore.SignalR;
+
+namespace signalRdeneme2
+{
+    public class MyHub:Hub
+    {
+        public async Task SendMessageAsync(string message)
+        {
+          await  Clients.All.SendAsync("tetiklenecekFonksiyon",message);
+        }
+
+    }
+}
+---------------------------------------
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.SignalR;
+using signalRdeneme2;
+
+var builder = WebApplication.CreateBuilder(args);
+
+
+builder.Services.AddCors(options=> options.AddDefaultPolicy(policy=>
+policy.AllowAnyMethod().AllowAnyHeader().AllowCredentials().SetIsOriginAllowed(origin=>true)));
+builder.Services.AddSignalR();
+var app = builder.Build();
+
+app.MapGet("/", () => "Hello World!");
+
+app.UseCors();
+
+app.UseRouting();
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapHub<MyHub>("/myhub");
+});
+
+app.Run();
+----------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="signalr.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>
+    <script>
+        $(document).ready(() => {
+            const connection = new signalR.HubConnectionBuilder()
+                .withUrl("https://localhost:7252/myhub")
+                .build();
+
+            connection.start();
+
+            $("#btnGonder").click(() => {
+                let message = $("#txtMessage").val();
+                connection.invoke("SendMessageAsync", message)
+                    .catch(error => console.log(`Mesaj gönderilirken oluşan hata: ${error}`));
+            });
+        });
+    </script>
+</head>
+<body>
+    <input type="text" id="txtMessage">
+    <button id="btnGonder">gönder</button>
+</body>
+</html>
