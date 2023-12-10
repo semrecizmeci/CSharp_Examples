@@ -1,0 +1,19 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class Program
+{
+    static void Main()
+    {
+        List<int> ints = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+        var intersection = ints.Intersect(new[] { 3, 7, 9 });
+
+        foreach (var item in intersection)
+        {
+            Console.WriteLine(item);
+        }
+    }
+}
+//Intersect metodu, iki koleksiyon arasındaki kesişimi bulur.
