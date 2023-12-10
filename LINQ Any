@@ -1,0 +1,16 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class Program
+{
+    static void Main()
+    {
+        List<int> ints = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+        bool anyMatch = ints.Any(i => new[] { 3, 7, 9 }.Any(x => x == i));
+
+        Console.WriteLine(anyMatch); // true
+    }
+}
+//Any metotu , koleksiyon içinde belirli bir koşulu sağlayan en az bir öğe olup olmadığını kontrol eder.
