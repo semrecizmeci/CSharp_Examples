@@ -1,0 +1,56 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    private List<int> list = new List<int>();
+    private static Program instance;
+
+    private Program() { }
+
+    public static Program Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = new Program();
+            }
+            return instance;
+        }
+    }
+
+    public void AddToMyList(int value)
+    {
+        list.Add(value);
+    }
+
+    public void PrintList()
+    {
+        foreach (int value in list)
+        {
+            Console.WriteLine(value);
+        }
+    }
+
+    static void Main()
+    {
+        Program program = Program.Instance;
+        program.AddToMyList(1);
+        program.AddToMyList(2);
+        program.AddToMyList(3);
+        program.AddToMyList(4);
+        program.AddToMyList(5);
+
+        program.PrintList();
+    }
+
+    public static void Metot()
+    {
+        // instance üzerinden list'e erişebilirsiniz
+        foreach (int value in Instance.list)
+        {
+            Console.WriteLine(value);
+        }
+    }
+}
