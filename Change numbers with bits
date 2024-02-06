@@ -1,0 +1,30 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int a = 198765432;//input : 00001011 11011000 11101011 01111000
+                          //output : 00001011 00011000 11101011 01111110
+        string b = Convert.ToString(a, 2).PadLeft(32, '0');
+        char[] bits = b.ToCharArray();
+        char oldFirst = bits[8];
+        char oldSecond = bits[9];
+        char oldThird = bits[10];
+
+        char newFirst = bits[29];
+        char newSecond = bits[30];
+        char newThird = bits[31];
+
+        bits[8] = newFirst;
+        bits[9] = newSecond;
+        bits[10] = newThird;
+
+        bits[29]= oldFirst;
+        bits[30]= oldSecond;
+        bits[31]= oldThird;
+
+        string newNumber=new string(bits);
+        Console.WriteLine(newNumber);
+    }
+}
