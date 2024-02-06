@@ -1,0 +1,47 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        while (true)
+        {
+            int a = 198765432;
+
+            string binaryRepresentation = Convert.ToString(a, 2).PadLeft(32, '0');
+            string formattedBinary = InsertSpacesEveryNCharacters(binaryRepresentation, 8);
+
+            Console.WriteLine($"Sayınız {a} ve bit karşılığı {formattedBinary}");
+            Console.WriteLine("Aralık için 2 sayı girin. Not: birinci sayı 0 dır");
+            byte first = Convert.ToByte(Console.ReadLine());
+            byte second = Convert.ToByte(Console.ReadLine());
+
+            Console.WriteLine($"{second - first} boyutu kadar bit giriniz:");
+            string newBits = Console.ReadLine();
+
+
+            string aa = binaryRepresentation.Substring(0, first);
+            string b = newBits.PadRight(second - first, '0');
+            string c = binaryRepresentation.Substring(second);
+
+
+            string newBinary = binaryRepresentation.Substring(0, first) + newBits.PadRight(second - first, '0') + binaryRepresentation.Substring(second);
+            string formattedNewBinary = InsertSpacesEveryNCharacters(newBinary, 8);
+
+            Console.WriteLine(formattedNewBinary);
+            Console.WriteLine();
+        }
+    }
+
+    static string InsertSpacesEveryNCharacters(string input, int n)
+    {
+        string result = "";
+        for (int i = 0; i < input.Length; i++)
+        {
+            if (i > 0 && i % n == 0)
+                result += " ";
+            result += input[i];
+        }
+        return result;
+    }
+}
