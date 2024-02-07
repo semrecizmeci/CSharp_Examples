@@ -1,0 +1,29 @@
+using System;
+using System.Text.RegularExpressions;
+using ClassLibrary1;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        while (true)
+        {
+            string userInput = Console.ReadLine();
+
+            if (Regex.IsMatch(userInput, @"^\d+$"))
+            {
+                Console.WriteLine("The entered value is an integer.");
+            }
+            else if (Regex.IsMatch(userInput, @"^-?\d+(\.\d+)?$"))
+            {
+                Console.WriteLine("The entered value is a decimal number.");
+            }
+            else
+            {
+                Console.WriteLine("The entered value is considered a text (string).");
+            }
+        }
+
+    }
+}
+
