@@ -1,0 +1,34 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    int[] ints = new int[5] { 3, -2, 1, 8, 1 };
+    int one = 0;
+    int two = 0;
+    int three = 0;
+    public static void Main()
+    {
+        Program program = new Program();
+        for (int i = 0; i < program.ints.Length; i++)
+        {
+            program.one = program.ints[i];
+
+            for (int j = i+1; j < program.ints.Length; j++)
+            {
+                if (i == 3) break;
+                else if(j==3) break;
+
+                program.two = program.ints[j];
+
+                for (int p = j+1; p < program.ints.Length; p++)
+                {
+                    program.three = program.ints[p];
+
+                    if (program.one + program.two + program.three == 0)
+                        Console.WriteLine("You have found a set whose elements have a sum of 0 !!");
+                }
+            }
+        }
+    }
+}
