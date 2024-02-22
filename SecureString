@@ -1,0 +1,31 @@
+using System;
+using System.Security;
+
+class Program
+{
+    static void Main()
+    {
+        using (SecureString securePassword = new SecureString())
+        {
+            Console.WriteLine("Enter your password:");
+
+            // Kullanıcıdan şifreyi al
+            while (true)
+            {
+                ConsoleKeyInfo key = Console.ReadKey(true);
+
+                // Kullanıcı Enter tuşuna bastıysa çıkış
+                if (key.Key == ConsoleKey.Enter)
+                {
+                    break;
+                }
+
+                // Girilen karakteri SecureString'e ekle
+                securePassword.AppendChar(key.KeyChar);
+                Console.Write("*");
+            }
+
+            Console.WriteLine();
+        }
+    }
+}
